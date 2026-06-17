@@ -2,6 +2,10 @@ import React from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import chattiqLogo from "../../public/LandingPageIcon/chattiq-logo.svg";
+import footerIcon from "../../public/LandingPageIcon/footer/f.svg";
+import facebookIcon from "../../public/LandingPageIcon/footer/f.svg";
+import twitterIcon from "../../public/LandingPageIcon/footer/twitter.svg";
+import instagramIcon from "../../public/LandingPageIcon/footer/instagram.svg";
 
 const productLinks = ["Pricing", "Solutions", "AI Agents", "No Code Bots"];
 const aboutLinks = ["About", "Why", "Platform", "Partnerships", "Affiliates"];
@@ -14,21 +18,15 @@ const helpLinks = [
 ];
 
 const FacebookIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
-  </svg>
+  <Image src={facebookIcon} alt="Facebook" className="w-6 h-6" />
 );
 
 const TwitterIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
+  <Image src={twitterIcon} alt="Twitter" className="w-6 h-6" />
 );
 
 const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-  </svg>
+  <Image src={instagramIcon} alt="Instagram" className="w-6 h-6" />
 );
 
 function FooterColumn({
@@ -39,8 +37,10 @@ function FooterColumn({
   children: React.ReactNode;
 }) {
   return (
-    <div className="site-footer__col">
-      <h4 className="site-footer__col-heading">{title}</h4>
+    <div className="flex flex-col justify-center mt-14 w-[40%] h-full gap-2">
+      <h2 className="mb-4 text-[1.25rem] xl:text-[1.35rem] 2xl:text-[1.4rem] font-medium text-black opacity-70">
+        {title}
+      </h2>
       {children}
     </div>
   );
@@ -48,16 +48,16 @@ function FooterColumn({
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="page-container">
-        <div className="site-footer__divider" aria-hidden />
+    
+      <footer className="flex flex-col items-center  justify-between h-full w-full" aria-labelledby="footer-heading">
+        <div className="bg-black h-[0.5px] w-[92%] " aria-hidden />
 
-        <div className="site-footer__main">
-          <div className="site-footer__brand-col">
-            <a href="/" className="site-footer__logo-link" aria-label="Chattiq home">
-              <Image src={chattiqLogo} alt="Chattiq" className="site-footer__logo-img" />
+        <div className="h-full w-full flex flex-row justify-between items-start gap-8 lg:gap-12 xl:gap-10 2xl:gap-2 px-10 py-10">
+          <div className="h-full w-full flex flex-col gap-6 justify-start items-start ">
+            <a href="/" aria-label="Chattiq home " className="w-full h-auto">
+              <Image src={chattiqLogo} alt="Chattiq" className="w-[80%] h-auto" />
             </a>
-            <p className="site-footer__desc">
+            <p className="w-[80%] text-[1.15rem] xl:text-[1.25rem] 2xl:text-[1.3rem] font-normal ml-12 opacity-60">
               We manage your chatbot setup, WhatsApp integration, website connection, lead
               automation, and regular support so you can focus on growing your business.
             </p>
@@ -67,7 +67,7 @@ export default function Footer() {
             <ul className="site-footer__col-list">
               {productLinks.map((link) => (
                 <li key={link}>
-                  <a href="#" className="site-footer__col-link">
+                  <a href="#" className="text-[1.15rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 2xl:gap-2 opacity-60">
                     {link}
                   </a>
                 </li>
@@ -79,7 +79,7 @@ export default function Footer() {
             <ul className="site-footer__col-list">
               {aboutLinks.map((link) => (
                 <li key={link}>
-                  <a href="#" className="site-footer__col-link">
+                  <a href="#" className="text-[1.15rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 2xl:gap-2 opacity-60">
                     {link}
                   </a>
                 </li>
@@ -91,7 +91,7 @@ export default function Footer() {
             <ul className="site-footer__col-list">
               {helpLinks.map((link) => (
                 <li key={link}>
-                  <a href="#" className="site-footer__col-link">
+                  <a href="#" className="text-[1.15rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 2xl:gap-2 opacity-60">
                     {link}
                   </a>
                 </li>
@@ -100,43 +100,43 @@ export default function Footer() {
           </FooterColumn>
 
           <FooterColumn title="Contact Us">
-            <ul className="site-footer__col-list">
+            <ul className=" gap-2 flex flex-col justify-start items-start w-full h-full">
               <li>
-                <a href="tel:+919243322064" className="site-footer__col-link site-footer__phone">
+                <a href="tel:+919243322064" className="text-[1.15rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 2xl:gap-2 opacity-60">
                   +91 92433 22064
                 </a>
               </li>
               <li>
-                <a href="mailto:info@elevatetrust.ai" className="site-footer__col-link">
+                <a href="mailto:info@elevatetrust.ai" className="text-[1.15rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 2xl:gap-2 opacity-60">
                   info@elevatetrust.ai
                 </a>
               </li>
-              <li className="site-footer__address">
+              <li className="text-[1.15rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 2xl:gap-2 opacity-60 ">
                 Chovisawadi, Charholi Budruk, Pune, Pimpri-Chinchwad, Maharashtra 412105
               </li>
             </ul>
           </FooterColumn>
         </div>
 
-        <div className="site-footer__divider" aria-hidden />
+        <div className="bg-black h-[0.5px] w-[92%] " aria-hidden />
 
-        <div className="site-footer__bar">
-          <div className="site-footer__bar-left">
-            <span className="site-footer__copyright">©2026 Chattiq. All rights reserved</span>
+        <div className="flex flex-row justify-between items-center  h-full text-[1.15rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 2xl:gap-2 opacity-90   gap-4 lg:gap-12 xl:gap-10 2xl:gap-10 w-[85%] py-10">
+          <div className="flex flex-row justify-start items-center gap-4 lg:gap-12 xl:gap-10 2xl:gap-12 w-full h-full">
+            <span className="">©2026 Chattiq. All rights reserved</span>
             <nav className="site-footer__legal-nav" aria-label="Legal links">
-              <a href="#" className="site-footer__legal-link">
+              <a href="#" className="">
                 Help
               </a>
-              <a href="#" className="site-footer__legal-link">
+              <a href="#" className="">
                 Privacy
               </a>
-              <a href="#" className="site-footer__legal-link">
+              <a href="#" className="">
                 Terms
               </a>
             </nav>
           </div>
 
-          <div className="site-footer__bar-right">
+          <div className="flex flex-row justify-end items-center gap-4 lg:gap-12 xl:gap-10 2xl:gap-12 w-full h-full">
             <div className="site-footer__socials">
               <a href="#" className="site-footer__social-icon" aria-label="Facebook">
                 <FacebookIcon />
@@ -149,12 +149,12 @@ export default function Footer() {
               </a>
             </div>
             <button type="button" className="site-footer__lang" aria-label="Select language">
-              <span>English (united States)</span>
+              <span className="text-[1.1rem] font-normal">English (united States)</span>
               <ChevronDown size={16} strokeWidth={2} aria-hidden />
             </button>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    
   );
 }

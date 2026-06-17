@@ -186,7 +186,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="testimonials-section__rule testimonials-section__rule--bottom" aria-hidden />
+      <div className="w-[90%] mx-auto h-[1px] bg-black mt-28" aria-hidden />
     </section>
   );
 }

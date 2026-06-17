@@ -43,7 +43,7 @@ const faqItems = [
 ];
 
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number>(0);
+  const [openIndex, setOpenIndex] = useState<number>(-1);
 
   const handleToggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? -1 : index));
@@ -51,18 +51,17 @@ export default function FaqSection() {
 
   return (
     <section className="faq-section" aria-labelledby="faq-heading">
-      <div className="page-container">
-        <header className="faq-section__header">
-          <h2 id="faq-heading" className="faq-section__title">
+      <div className="flex flex-col items-center">
+        <header className="flex flex-col items-center gap-12 mb-24 ">
+          <h2 id="faq-heading" className="w-full text-center text-[3.5rem] xl:text-[4rem] 2xl:text-[4.5rem] font-extrabold">
             Some Common Questions You Might Have
           </h2>
-          <p className="faq-section__subtitle">
-            Find quick answers to common questions about Chattiq, its setup, features,
-            integrations, pricing, and support.
+          <p className="w-[60%] text-[1.45rem] xl:text-[1.65rem] 2xl:text-[1.95rem] font-normal text-center">
+            Find quick answers to common questions about Chattiq, its setup, features, integrations, pricing, and support.
           </p>
         </header>
 
-        <div className="faq-accordion" role="list">
+        <div className="w-[70%] flex flex-col gap-8 justify-content " role="list">
           {faqItems.map((item, index) => {
             const isOpen = openIndex === index;
 
@@ -70,27 +69,28 @@ export default function FaqSection() {
               <div
                 key={item.number}
                 role="listitem"
-                className={`faq-item${isOpen ? " faq-item--open" : ""}`}
+                className={`faq-item${isOpen ? " faq-item--open" : ""} `}
               >
-                <button
-                  type="button"
-                  className="faq-item__trigger"
-                  onClick={() => handleToggle(index)}
-                  aria-expanded={isOpen}
-                  aria-controls={`faq-panel-${index}`}
-                >
+                <div className="faq-item__trigger">
                   <span className="faq-item__label">
-                    <span className="faq-item__number">{item.number}</span>
-                    <span className="faq-item__title">{item.title}</span>
+                    <span className="text-[2.25rem] font-medium">{item.number}</span>
+                    <span className="text-[2.25rem] font:__nextjs-Geist">{item.title}</span>
                   </span>
-                  <span className="faq-item__icon" aria-hidden>
+                  <button
+                    type="button"
+                    className="faq-item__icon"
+                    onClick={() => handleToggle(index)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${index}`}
+                    aria-label={isOpen ? `Collapse ${item.title}` : `Expand ${item.title}`}
+                  >
                     {isOpen ? (
-                      <Minus size={18} strokeWidth={2.5} />
+                      <Minus size={18} strokeWidth={2.5} aria-hidden />
                     ) : (
-                      <Plus size={18} strokeWidth={2.5} />
+                      <Plus size={18} strokeWidth={2.5} aria-hidden />
                     )}
-                  </span>
-                </button>
+                  </button>
+                </div>
 
                 <div
                   id={`faq-panel-${index}`}
@@ -108,13 +108,15 @@ export default function FaqSection() {
           })}
         </div>
 
-        <div className="faq-cta">
-          <h3 className="faq-cta__title">Lets Grow Your Business Together</h3>
-          <div className="faq-cta__buttons">
-            <a href="#trial" className="faq-cta__btn faq-cta__btn--primary">
+        <div className="flex flex-col items-center gap-12 mt-24">
+          <h3 className="text-[4.45rem] font-bold text-center">
+            Lets Grow Your Business Together
+          </h3>
+          <div className="gap-12 flex flex-row">
+            <a href="#trial" className="text-[1.35rem] font-medium bg-[#A2EFA3] border-[1.5px] px-4 py-3 rounded-[6px] text-center">
               Book a Trial
             </a>
-            <a href="#get-started" className="faq-cta__btn faq-cta__btn--secondary">
+            <a href="#get-started" className="text-[1.35rem] font-medium bg-white border-[1.5px] px-4 py-3 rounded-[6px] text-center">
               Get Started
             </a>
           </div>
